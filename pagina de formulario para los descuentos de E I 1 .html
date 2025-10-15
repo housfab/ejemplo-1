@@ -1,0 +1,108 @@
+﻿<html lang="es"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title> Mi empresa taller </title>
+</head><body>
+
+    
+
+
+<h1>Ingreso de datos para ser usuario de ELECTROTECNIA INFORMATICA y poder acceder a precios con descuentos muy importantes en lo que se refiere a venta reparacion enseñanza y acesoramiento pos venta , etc ... </h1>
+        <br/><br/>
+        <form name="fvalida" action="#" method="get">
+            <br/><br/>Nombre: &nbsp; &nbsp; <input type="text" name="nombre" id="name" size="30" maxlength="100"/>
+            <br/><br/>Apellido: &nbsp; &nbsp;<input type="text" name="apellido" id="name" size="30" maxlength="100"/>
+            <br/><br/>Nombre de <br/> usuario:&nbsp; &nbsp; &nbsp; <input type="text" name="usuario" id="name" size="30" maxlength="100"/>
+            <br/>
+            <br/>
+            <br/><br/>correo<br/> electronico:&nbsp;<input type="text" name="correo" id="correo" size="30" maxlength="100"/>
+            <br/> <br/>Edad: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;<input type="text" name="edad" size="3" maxlength="3"/>
+            <br/><br/>
+            <br/><br/>password: &nbsp;&nbsp;&nbsp;<input type="text" name="contrasena" id="contrasena" size="30" maxlength="100"/>
+
+
+            <br/><br/><input type="submit" onclick="return validar()" value="entrar"/><br/><br/>
+            <input type="reset" value="cancelar" name="btn_cancelar"/>
+        </form>
+        <script>
+            function validar() {
+
+                var n = document.fvalida.nombre.value.trim();
+                if (!n.match(/^[A-z\s]+$/) || n.length <= 3) {
+                    alert('El elemento nombre debe contener un valor y ademas debe contener mas de tres letras (SOLAMENTE LETRAS)');
+                    document.fvalida.nombre.focus();
+                    return false;
+                }
+                var h = document.fvalida.apellido.value.trim();
+                if (!h.match(/^[A-z\s]+$/) || h.length <= 3) {
+                    alert('El elemento apellido debe contener un valor y ademas debe contener mas de tres letras (SOLAMENTE LETRAS)');
+                    document.fvalida.apellido.focus();
+                    return false;
+                }
+                var j = document.fvalida.usuario.value.trim();
+                if (!j.match(/^[A-z\s]+$/) || j.length <= 3) {
+                    alert('El elemento nombre de usuario debe contener un valor y ademas debe contener mas de tres letras (SOLAMENTE LETRAS)');
+                    document.fvalida.usuario.focus();
+                    return false;
+                }
+
+                //Validar Numero en Edad con isNaN  y  !Number
+                var e = document.fvalida.edad.value;
+                if (!(parseInt(e)) || !(e >= 18)) {
+                    alert('El dato Edad debe ser numÃ©rico Entero y ademas la edad comprendida debe ser de 18 aÃ±os en adelante !');
+                    document.fvalida.edad.focus();
+                    return false;
+                }
+
+                var x = document.fvalida.correo.value.trim();
+                if (!x) {
+                    alert('el correo de estar correcto  y debe contener caracteres');
+                    document.fvalida.correo.focus();
+                    return false;
+                }
+
+
+
+                var i = document.fvalida.contrasena.value.trim();
+                if (!i || i.length < 8) {
+                    alert('La  contraseÃ±a puesta debe contener 8 o mas caracteres');
+                    document.fvalida.contrasena.focus();
+                    return false;
+                }
+
+
+
+
+                //validar existencia de opcion seleccionada
+
+                //el formulario es vÃ¡lido
+                // confirm('Confirmacion ');
+                if (confirm('Confirma el envÃ­o de los datos?')) {
+                    return true
+                } else {
+                    return false
+                }
+
+            }
+        </script>
+        <br/>
+        <table border="solid" bgcolor=" aquamarine">
+            <tbody><tr>
+                <td><a href="index.html " target="_blank ">PRINCIPAL</a></td>
+                <td><a href="galeria de imagenes E I.html " target="_blank ">FOTOS DE  ELECTROTECNIA INFORMATICA</a>
+                </td>
+
+
+
+            </tr>
+
+        </tbody></table>
+    
+
+
+
+
+
+
+
+</body></html>
