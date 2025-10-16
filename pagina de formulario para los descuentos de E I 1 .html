@@ -3,6 +3,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title> Mi empresa taller </title>
 </head><body>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dbd6d6;
+            padding: 20px;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            margin: 30px auto;
+            border: 2px solid #6c757d; 
+        h1 {
+            color: #78011f;
+            text-align: center;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        .g { 
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], 
+        input[type="number"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input:focus {
+            border-color: #800020; 
+            outline: none;
+            box-shadow: 0 0 5px rgba(128, 0, 32, 0.5);
+        }
+        input[type="submit"], input[type="reset"] {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        input[type="submit"] {
+            background-color: #800020; 
+            color: white;
+            margin-right: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #580017;
+        }
+        input[type="reset"] {
+            background-color: #6c757d; 
+            color: white;
+        }
+        input[type="reset"]:hover {
+            background-color: #495057; 
+        }
+        /
+        table {
+            margin: 15px auto;
+        }
+        td {
+            padding: 8px 12px;
+            background-color: #ced4da;
+            border: 1px solid #6c757d;
+        }
+        td a {
+            color: #800020;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
 
     
 
@@ -15,7 +96,7 @@
             <br/><br/>Nombre de <br/> usuario:&nbsp; &nbsp; &nbsp; <input type="text" name="usuario" id="name" size="30" maxlength="100"/>
             <br/>
             <br/>
-            <br/><br/>correo<br/> electronico:&nbsp;<input type="text" name="correo" id="correo" size="30" maxlength="100"/>
+            <br/><br/>Mail<br/> ;&nbsp;<input type="text" name="correo" id="correo" size="30" maxlength="100"/>
             <br/><br/>Teléfono: &nbsp;&nbsp;&nbsp;<input type="text" name="telefono" id="telefono" size="30" maxlength="20"/>
             <br/> <br/>Edad: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;<input type="text" name="edad" size="3" maxlength="3"/>
             <br/><br/>
@@ -47,49 +128,32 @@
                     return false;
                 }
 
-                //Validar Numero en Edad con isNaN  y  !Number
+               
                 var e = document.fvalida.edad.value;
                 if (!(parseInt(e)) || !(e >= 18)) {
                     alert('El dato Edad debe ser numÃ©rico Entero y ademas la edad comprendida debe ser de 18 aÃ±os en adelante !');
                     document.fvalida.edad.focus();
                     return false;
                 }
-
-              // Validación de Correo Electrónico
-var x = document.fvalida.correo.value.trim();
-var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-if (!emailRegex.test(x)) {
-    alert('Debe ingresar un correo electrónico válido (ej: usuario@dominio.com).');
-    
-    // 🚨 LO QUE FALTABA AQUÍ:
-    document.fvalida.correo.focus(); // 1. Enfoca el campo.
-    return false;                     // 2. Detiene el envío.
-    
-} 
-var tel = document.fvalida.telefono.value.trim();
-var telRegex = /^\+?[\d\s-()]{7,20}$/; 
-if (!telRegex.test(tel)) {
-    alert('Debe ingresar un número de teléfono válido. Solo se permiten números, espacios, guiones o paréntesis (mínimo 7 dígitos).');
-    document.fvalida.telefono.focus();
-    return false;
-}
-
-
-
-                var i = document.fvalida.contrasena.value.trim();
-                if (!i || i.length < 8) {
+                 var x = f.correo.value.trim();
+                 var MailrEGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                 if (!mailRegex.test(x)) {
+                    alert('Debe ingresar un **mail** u otro correo electrónico válido.');
+                    f.correo.focus(); return false;             
+                    }
+                    var tel = document.fvalida.telefono.value.trim();
+                    var telRegex = /^\+?[\d\s-()]{7,20}$/; 
+                    if (!telRegex.test(tel)) {
+                        alert('Debe ingresar un número de teléfono válido. Solo se permiten números, espacios, guiones o paréntesis (mínimo 7 dígitos).');
+                        document.fvalida.telefono.focus();
+                         return false;
+                        }
+                        var i = document.fvalida.contrasena.value.trim();
+                            if (!i || i.length < 8) {
                     alert('La  contraseÃ±a puesta debe contener 8 o mas caracteres');
                     document.fvalida.contrasena.focus();
                     return false;
                 }
-
-
-
-
-                //validar existencia de opcion seleccionada
-
-                //el formulario es vÃ¡lido
-                // confirm('Confirmacion ');
                 if (confirm('Confirma el envÃ­o de los datos?')) {
                     return true
                 } else {
