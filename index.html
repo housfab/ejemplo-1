@@ -1,41 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>trabajo integrador</title>
-    <link rel="stylesheet" type="text/css" href="estilos/Estilo de integrador.css">
+    <link rel="stylesheet" href="estilos.css"> 
+    
+    <style>
+        .carousel-container { max-width: 900px; margin: 40px auto; position: relative; overflow: hidden; border: 5px solid var(--color-acento); border-radius: 10px; }
+        .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide img { 
+            width: 100%; 
+            height: 450px; 
+            object-fit: contain; /* Ajusta la imagen completa sin recorte */
+            flex-shrink: 0; 
+            background-color: var(--color-fondo-principal); /* Color de fondo si aparecen barras */
+        }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.7); color: white; border: none; padding: 15px 10px; cursor: pointer; font-size: 1.2em; z-index: 10; }
+        .prev-btn { left: 0; }
+        .next-btn { right: 0; }
+    </style>
 </head>
-
 <body>
- <ul>
-<li> <a href="formulario mas nuevo 12.html" target="_blank ">Formulario para inscribirse y poder obtener consultas y  descuentos especiales</a>
-        </li>  
+    <div class="nav-container">
+        <nav class="nav-menu">
+            <ul class="nav-list">
+                <li><a href="index.html">Principal</a></li>
+                <li><a href="articulo.html">Servicios</a></li>
+                <li><a href="formulario.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
 
-</ul>
+    <div class="container main-content">
+        <h1 class="">ELECTROTECNIA </h1>
+        
+        <h2 class=""> INFORMATICA </h2>
+        
+        <p class="lema">"Tecnología Integral. Soluciones Técnicas en Cada Área."</p>
 
-    <h1 class=" arial ">ELECTROTECNIA </h1>
+        <p>Una Empresa laboratorio , taller , que hace Asesoramientos en todo tipo de tecnologias : <a href="https://www.youtube.com/watch?v=LEGNsnHSThA" target="_blank ">Instalaciones de gas</a> , <a href="https://www.youtube.com/watch?v=eo1aPBdRdrc" target="_blank ">Plomeria </a> , <a href="https://www.facebook.com/carlospannorefrigeracion" target="_blank ">Refrigeracion y aire acondicionado</a> . Enseñanza en el uso de (dispositivos tecnicos y cientificos) entre otros , asi como tambien trabajos en electrotecnia electronica informatica tecnica ; metalurgica herreria (colocacion de antenas, diagnostico, reparacion , y mantemiento de PC, instalacion y configuracion de camara de seguridad , soluciones informaticas : paginas webs);</p>
+        
+        <div style="margin-top: 50px;">
+            <p>AQUI ESTA LO QUE UD PUEDE ENCONTRAR EN LA EMPRESA LABORATORIO</p>
+            <div class="carousel-container">
+                <div id="carousel-slide" class="carousel-slide">
+                </div>
+                <button class="carousel-btn prev-btn" onclick="prevSlide()">&#10094;</button>
+                <button class="carousel-btn next-btn" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="site-footer nav-menu" style="text-align: center; margin-top: 50px;">
+        <p>© 2025 Proyecto Académico.</p>
+    </div>
 
-    <h2 class="arial "> INFORMATICA </h2>
-
-    <p id- "especial ">Una Empresa laboratorio , taller , que hace Asesoramientos en todo tipo de tecnologias : <a href="https://www.youtube.com/watch?v=LEGNsnHSThA" target="_blank ">Instalaciones de gas</a> , <a href="https://www.youtube.com/watch?v=eo1aPBdRdrc" target="_blank ">Plomeria </a>        , <a href="https://www.facebook.com/carlospannorefrigeracion" target="_blank ">Refrigeracion y aire acondicionado</a> . Enseñanza en el uso de (dispositivos tecnicos y cientificos) entre otros , asi como tambien trabajos en electrotecnia electronica informatica tecnica ; metalurgica
-         herreria (colocacion de antenas, diagnostico, reparacion , y mantemiento de PC, instalacion y configuracion de camara de seguridad ,  soluciones informaticas : paginas webs);</p>
-    <br><br>
-
-
-    <br><br><br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-
-<script type="text/javascript" src="galeria de fotos.js"></script>
-
-
-
-    <p>AQUI ESTA LO QUE UD PUEDE ENCONTRAR EN LA EMPRESA LABORATORIO</p>
-    <form name="f1">
-        <input type="button" value="&lt;--" onclick="atraz()"/>
-        <img src="foto1.jpg" width="580" height="528" id="foto"/>
-        <input type="button" value="--&gt;" onclick="adelante()"/>
-
-    </form>
+    <script>
+        const imagenes = [ // Uso de Arrays
+            'img/carrusel_1.jpg', 'img/carrusel_2.jpg','img/carrusel_3.jpg','img/carrusel_4.jpg'
+        ];
+        let indiceActual = 0;
+        const slideContainer = document.getElementById('carousel-slide');
+        
+        function initCarousel() {
+            imagenes.forEach(src => {
+                const img = document.createElement('img'); // Manipulación del DOM
+                img.src = src;
+                slideContainer.appendChild(img);
+            });
+            actualizarPosicionCarrusel();
+        }
+        function actualizarPosicionCarrusel() {
+            if (slideContainer.children.length > 0) {
+                const anchoSlide = slideContainer.children[0].clientWidth;
+                slideContainer.style.transform = `translateX(${-anchoSlide * indiceActual}px)`;
+            }
+        }
+        function prevSlide() {
+            indiceActual--;
+            if (indiceActual < 0) {
+                indiceActual = imagenes.length - 1;
+            }
+            actualizarPosicionCarrusel();
+        }
+        function nextSlide() {
+            indiceActual++;
+            if (indiceActual >= imagenes.length) {
+                indiceActual = 0;
+            }
+            actualizarPosicionCarrusel();
+        }
+        document.addEventListener('DOMContentLoaded', initCarousel); // Manejo de Eventos
+        window.addEventListener('resize', actualizarPosicionCarrusel); // Uso del BOM
+    </script>
 </body>
 </html>
